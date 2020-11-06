@@ -6,7 +6,7 @@
 /*   By: hyeyoo <hyeyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 21:06:10 by hyeyoo            #+#    #+#             */
-/*   Updated: 2020/11/06 23:33:23 by hyeyoo           ###   ########.fr       */
+/*   Updated: 2020/11/06 23:34:28 by hyeyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Token Interpreter::get_next_token() {
   char c;
 
   /* if all characters are read, it returns END_OF_FILE */
-  if (this->_pos == this->_text.size()) {
+  if (this->is_eof()) {
     return Token(END_OF_FILE);
   }
 
@@ -33,7 +33,7 @@ Token Interpreter::get_next_token() {
   c = this->current();
   while (isspace(c)) {
     this->advance();
-    if (this->_pos == this->_text.size())
+    if (this->is_eof())
       break;
     c = this->current();
   }
@@ -44,7 +44,7 @@ Token Interpreter::get_next_token() {
     while (isdigit(c)) {
       number = number * 10 + (c - '0');
       this->advance();
-      if (this->_pos == this->_text.size())
+      if (this->is_eof())
         break;
       c = this->current();
     }
@@ -68,6 +68,10 @@ void Interpreter::eat(Type type) {
   } else {
     throw std::exception();
   }
+}
+
+bool Interpreter::is_eof() const {
+  return (this->_pos == this->_text.size());
 }
 
 int Interpreter::eval() {

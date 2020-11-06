@@ -6,7 +6,7 @@
 /*   By: hyeyoo <hyeyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 21:02:37 by hyeyoo            #+#    #+#             */
-/*   Updated: 2020/11/06 22:51:55 by hyeyoo           ###   ########.fr       */
+/*   Updated: 2020/11/06 23:34:39 by hyeyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ class Interpreter {
    char         current() const;
    void         eat(Type type);
    int          eval();
+   bool         is_eof() const;
 };
