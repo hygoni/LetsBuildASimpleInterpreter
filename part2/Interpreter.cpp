@@ -6,7 +6,7 @@
 /*   By: hyeyoo <hyeyoo@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 21:06:10 by hyeyoo            #+#    #+#             */
-/*   Updated: 2020/11/06 23:32:22 by hyeyoo           ###   ########.fr       */
+/*   Updated: 2020/11/06 23:33:23 by hyeyoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ Token Interpreter::get_next_token() {
     return Token(END_OF_FILE);
   }
 
+  /* skip whitespace */
   c = this->current();
   while (isspace(c)) {
     this->advance();
